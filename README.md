@@ -47,7 +47,7 @@ Banco de Dados -> AnamneseRepository -> AnamneseService -> AnamneseController ->
 ## 🔌 Endpoints Implementados
 
 ### Aluno
-- `POST /alunos` → Cadastrar aluno
+- `POST /alunos` → Cadastrar trainee
 
 ```
 {
@@ -58,7 +58,7 @@ Banco de Dados -> AnamneseRepository -> AnamneseService -> AnamneseController ->
 }
 ```
 
-- `GET /alunos/{id}` → Consultar aluno
+- `GET /alunos/{id}` → Consultar trainee
 
 ### Anamnese
 - `POST /anamnese` → Registrar respostas
