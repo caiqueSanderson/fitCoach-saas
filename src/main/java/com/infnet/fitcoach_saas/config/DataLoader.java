@@ -20,20 +20,20 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) {
         if (userRepository.count() == 0) {
-            User instrutor = User.builder()
+            User instructor = User.builder()
                     .username("instructor")
                     .password(passwordEncoder.encode("123456"))
                     .role(Role.ROLE_INSTRUCTOR)
                     .build();
 
-            User aluno = User.builder()
+            User trainee = User.builder()
                     .username("trainee")
                     .password(passwordEncoder.encode("123456"))
                     .role(Role.ROLE_TRAINEE)
                     .build();
 
-            userRepository.save(instrutor);
-            userRepository.save(aluno);
+            userRepository.save(instructor);
+            userRepository.save(trainee);
         }
     }
 }
