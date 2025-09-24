@@ -11,6 +11,12 @@
 
 ## 📊 Diagrama de Casos de Uso
 
-![Diagrama de Casos de Uso - Cadastro de Aluno](img/use_cases_add_trainee.png)
+![Diagrama de Casos de Uso - Cadastro de Aluno](img/add_trainee.png)
 
-![Diagrama de Casos de Uso](img/use_cases_create_workout.png)
+![Diagrama de Casos de Uso - Cadastro de Aluno](img/link_training.png)
+
+![Diagrama de Casos de Uso](img/add_workout.png)
+
+![Diagrama de Casos de Uso](img/view_workout.png)
+
+
