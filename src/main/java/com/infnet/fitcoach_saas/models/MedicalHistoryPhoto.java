@@ -6,8 +6,8 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 @Data
 @Entity
-@Table(name = "anamnese_photo",
-        uniqueConstraints = @UniqueConstraint(columnNames = {"anamnese_id", "position"}))
+@Table(name = "medical_history_photo",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"medical_history_id", "position"}))
 public class MedicalHistoryPhoto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +24,6 @@ public class MedicalHistoryPhoto {
     private String mimeType;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "anamnese_id", nullable = false)
+    @JoinColumn(name = "medical_history_id", nullable = false)
     private MedicalHistory medicalHistory;
 }
