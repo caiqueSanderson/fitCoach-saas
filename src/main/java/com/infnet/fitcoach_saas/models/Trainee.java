@@ -11,9 +11,7 @@ public class Trainee {
     private Long id;
 
     private String name;
-    private Integer age;
-    private Double weight;
-    private Double height;
+    private String cpf;
 
     @ManyToOne
     @JoinColumn(name = "instructor_id")
