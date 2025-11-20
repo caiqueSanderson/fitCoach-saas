@@ -1,7 +1,7 @@
-# 🎭 Casos de Uso
+# Casos de Uso
 
-## 📋 Lista de Casos de Uso
-1. **Cadastro Aluno** → O próprio aluno cria o cadastro e busca o personal.
+## Lista de Casos de Uso
+1. **Cadastro Aluno** → O Personal cria o cadastro do aluno e fica no aguardo na medicalHistory.
 2. **Responder Anamnese** → O aluno responde questionário de saúde e objetivos.
 3. **Cadastrar Exercício** → O personal adiciona novos exercícios no banco.
 4. **Criar Treino** → O personal monta um treino a partir dos exercícios cadastrados.

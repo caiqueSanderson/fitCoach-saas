@@ -1,7 +1,7 @@
 # FitCoach SaaS - Monólito Spring Boot
 
 ## 🎯 Objetivo da Etapa
-Desenvolver uma aplicação monolítica simples em **Spring Boot**, que permita cadastrar alunos, registrar anamnese e montar treinos básicos. Esta etapa prepara a base para evoluir para um Micro SaaS no futuro.
+Desenvolver uma aplicação monolítica simples em **Spring Boot**, que permita cadastrar alunos, registrar medicalHistory e montar treinos básicos. Esta etapa prepara a base para evoluir para um Micro SaaS no futuro.
 
 ---
 
@@ -25,7 +25,7 @@ Desenvolver uma aplicação monolítica simples em **Spring Boot**, que permita 
 ### Domínio e Subdomínios
 - **Domínio:** Gestão de Treinos
 - **Subdomínios:**
-    - Alunos: cadastro e anamnese
+    - Alunos: cadastro e medicalHistory
     - Exercícios: cadastro simples
     - Treinos: associação de exercícios a alunos
 
@@ -61,7 +61,7 @@ Banco de Dados -> AnamneseRepository -> AnamneseService -> AnamneseController ->
 - `GET /alunos/{id}` → Consultar trainee
 
 ### Anamnese
-- `POST /anamnese` → Registrar respostas
+- `POST /medicalHistory` → Registrar respostas
 
 ```
 {

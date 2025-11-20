@@ -5,7 +5,7 @@ O **FitCoach SaaS** é um software para auxiliar **personal trainers** na criaç
 Ele serve como base para evolução futura em um **micro SaaS**.
 
 ## 📌 Funcionalidades
-- Cadastro de alunos e anamnese
+- Cadastro de alunos e medicalHistory
 - Cadastro de exercícios com nome, descrição e vídeo de execução
 - Montagem de treinos personalizados
 - Disponibilização de treinos e vídeos para os alunos
