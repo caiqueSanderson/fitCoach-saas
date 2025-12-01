@@ -47,30 +47,19 @@ Banco de Dados -> AnamneseRepository -> AnamneseService -> AnamneseController ->
 ## 🔌 Endpoints Implementados
 
 ### Role Instructor
-- `POST /instructor/trainees/{instructorId}` → Cadastrar trainee
+- `POST /instructor/trainee` → Cadastrar trainee
 
 ```
 {
   "nome": "João Silva",
-  "idade": 25,
-  "peso": 70,
-  "altura": 1.75
+  "cpf": "XXX.XXX.XXX-XX"
 }
 ```
 
-- `GET /instructor/trainees/{instructorId}` → Consultar trainee
+- `GET /instructor/trainee/` → Ver todos os trainee
+- `GET /instructor/trainee/{id}` → Ver um trainee em especifico
+- `GET /instructor/history/{traineeId}` → Ver anamnese do trainee
 
-### Anamnese
-- `POST /medicalHistory` → Registrar respostas
-
-```
-{
-  "alunoId": 1,
-  "respostas": {
-      "objetivo": "perda de peso",
-      "frequenciaExercicio": "3x por semana"
-  }
-}
-```
-### Treinos
-- `GET /treinos/{alunoId}` → Consultar treino
+### Role Trainee
+- `GET /trainee/history/{id}` → Responder a anamnese
+- `GET /workout/{id}` → Ver o treino associado ao trainee
