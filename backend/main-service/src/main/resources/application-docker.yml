@@ -1,0 +1,25 @@
+server:
+  port: 8082
+
+spring:
+  profiles:
+  active: docker
+  datasource:
+  url: jdbc:postgresql://main-postgres:5432/maindb
+  username: postgres
+  password: admin
+
+  jpa:
+    hibernate:
+    ddl-auto: update
+  
+  # Apontar para workout-service (container DNS)
+  clients:
+    workout-service:
+    url: http://workout-service:8081
+  
+  # RabbitMQ (shared broker)
+  rabbitmq:
+    host: workout-rabbit
+    username: guest
+    password: guest

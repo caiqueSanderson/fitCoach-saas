@@ -1,4 +1,4 @@
-package com.infnet.workout_service.application.dto;
+package com.infnet.main_service.clients.dto;
 
 import java.util.List;
 
@@ -8,8 +8,6 @@ public class WorkoutDTO {
     private String goal;
     private List<WorkoutExerciseDTO> exercises;
     private String notes;
-
-    public WorkoutDTO() {}
 
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
@@ -31,18 +29,12 @@ public class WorkoutDTO {
         private int sets;
         private int reps;
         private int restSeconds;
-
-        public WorkoutExerciseDTO() {}
-
         public String getExerciseId() { return exerciseId; }
         public void setExerciseId(String exerciseId) { this.exerciseId = exerciseId; }
-
         public int getSets() { return sets; }
         public void setSets(int sets) { this.sets = sets; }
-
         public int getReps() { return reps; }
         public void setReps(int reps) { this.reps = reps; }
-
         public int getRestSeconds() { return restSeconds; }
         public void setRestSeconds(int restSeconds) { this.restSeconds = restSeconds; }
     }

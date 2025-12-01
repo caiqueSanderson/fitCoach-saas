@@ -37,6 +37,36 @@ services:
     networks:
       - workout-net
 
+  main-postgres:
+    image: postgres:16
+    container_name: main-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: maindb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5433:5432"
+    networks:
+      - fit-net
+
+  main-service:
+      build:
+        context: .
+        dockerfile: main-service/Dockerfile
+      container_name: main-service
+      restart: always
+      depends_on:
+        - main-postgres
+        - workout-service
+        - workout-rabbit
+      ports:
+        - "8082:8082"
+      environment:
+        - SPRING_PROFILES_ACTIVE=docker
+      networks:
+        - fit-net
+
 networks:
   workout-net:
     driver: bridge

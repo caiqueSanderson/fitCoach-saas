@@ -23,7 +23,7 @@ public class WorkoutAppService {
     public WorkoutDTO createWorkout(WorkoutDTO dto) {
         Workout domain = WorkoutMapper.toDomain(dto);
         Workout saved = workoutRepository.save(domain);
-        // publicar evento de criação (id + name)
+
         eventProducer.publishWorkoutCreated(saved.getId(), saved.getName());
         return WorkoutMapper.toDTO(saved);
     }
