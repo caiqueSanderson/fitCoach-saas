@@ -1,0 +1,72 @@
+services:
+
+  workout-mongo:
+    image: mongo:7
+    container_name: workout-mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: workoutdb
+    networks:
+      - workout-net
+
+  workout-rabbit:
+    image: rabbitmq:3-management
+    container_name: workout-rabbit
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - workout-net
+
+  workout-service:
+    build:
+      context: ./backend/workout-service
+      dockerfile: Dockerfile
+    container_name: workout-service
+    restart: always
+    depends_on:
+      - workout-mongo
+      - workout-rabbit
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    networks:
+      - workout-net
+
+  main-postgres:
+    image: postgres:16
+    container_name: main-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: maindb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5433:5432"
+    networks:
+      - fit-net
+
+  main-service:
+      build:
+        context: .
+        dockerfile: main-service/Dockerfile
+      container_name: main-service
+      restart: always
+      depends_on:
+        - main-postgres
+        - workout-service
+        - workout-rabbit
+      ports:
+        - "8082:8082"
+      environment:
+        - SPRING_PROFILES_ACTIVE=docker
+      networks:
+        - fit-net
+
+networks:
+  workout-net:
+    driver: bridge

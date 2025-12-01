@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: workout-service
+
+  data:
+    mongodb:
+      uri: mongodb://workout-mongo:27017/workoutdb
+
+  rabbitmq:
+    host: workout-rabbit
+    port: 5672
+    username: guest
+    password: guest
