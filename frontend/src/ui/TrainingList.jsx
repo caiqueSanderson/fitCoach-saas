@@ -7,21 +7,43 @@ const trainings = [
 
 export default function TrainingList() {
     return (
-        <div className="bg-white p-4 rounded shadow">
-            <h3 className="text-lg font-medium mb-3">Treinos</h3>
+        <div className="text-white"> 
+            {/* <h3 className="text-xl font-semibold mb-4 text-teal-400">Treinos Ativos</h3> */}
+            
             <ul className="space-y-3">
                 {trainings.map(t => (
-                    <li key={t.id} className="flex items-center justify-between">
+                    <li 
+                        key={t.id} 
+                        className="flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 rounded-lg transition-all border-b border-white/10"
+                    >
                         <div>
-                            <div className="font-medium">{t.title}</div>
-                            <div className="text-sm text-slate-500">Alunos: {t.students}</div>
+                            <div className="font-semibold text-lg text-white">{t.title}</div>
+                      
+                            <div className="text-sm text-slate-300 mt-0.5">
+                                Alunos Ativos: <span className="text-teal-400 font-bold">{t.students}</span>
+                            </div>
                         </div>
+                        
                         <div>
-                            <button className="px-3 py-1 rounded bg-sky-600 text-white text-sm">Ver</button>
+                            <button 
+                                className="px-4 py-2 rounded-full 
+                                    bg-teal-500 hover:bg-teal-400 text-white font-medium 
+                                    text-sm transition-colors shadow-md hover:shadow-teal-500/40"
+                            >
+                                Detalhes
+                            </button>
                         </div>
                     </li>
                 ))}
             </ul>
+            
+            <div className="mt-6 text-center border-t border-white/10 pt-4">
+                <button 
+                    className="text-sm text-slate-300 hover:text-purple-400 transition-colors"
+                >
+                    Ver Todos os Treinos
+                </button>
+            </div>
         </div>
     )
 }

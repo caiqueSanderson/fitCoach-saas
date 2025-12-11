@@ -94,14 +94,14 @@ export default function Login() {
                     {mode === 'trainee' && (
                         <>
                             <label className="block mb-2 text-sm font-medium text-slate-200">
-                                Token de Acesso
+                                CPF
                             </label>
                             <input
                                 value={token}
                                 onChange={e => setToken(e.target.value)}
                                 className="w-full p-3 rounded-lg bg-white/20 text-white border border-white/30
                                 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-400 mb-5"
-                                placeholder="Cole seu token aqui"
+                                placeholder="Insira seu CPF aqui"
                             />
                         </>
                     )}

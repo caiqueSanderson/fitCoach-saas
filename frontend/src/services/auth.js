@@ -17,9 +17,9 @@ export function useAuth() {
         return res
     }
 
-    async function loginTrainee(token) {
-        const res = await api.post('/auth/trainee/login', { token })
-        _auth.token = token
+    async function loginTrainee(cpf) {
+        const res = await api.post('/auth/trainee/login', { cpf })
+        _auth.token = cpf
         _auth.role = "TRAINEE"
         setIsAuthenticated(true)
         return res
