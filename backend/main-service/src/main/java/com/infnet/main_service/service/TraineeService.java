@@ -26,4 +26,9 @@ public class TraineeService {
     public Optional<Trainee> findById(Long id){
         return repository.findById(id);
     }
+
+    public Optional<Trainee> findByCpf(String cpf) {
+        return repository.findByCpf(cpf);
+    }
+
 }

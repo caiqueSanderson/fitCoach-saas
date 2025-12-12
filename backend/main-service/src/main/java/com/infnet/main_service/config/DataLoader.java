@@ -1,39 +1,46 @@
 package com.infnet.main_service.config;
 
+import com.infnet.main_service.models.auth.InstructorUser;
+import com.infnet.main_service.models.auth.TraineeUser;
 import com.infnet.main_service.models.enums.Role;
-import com.infnet.main_service.models.User;
-import com.infnet.main_service.repository.UserRepository;
+import com.infnet.main_service.repository.auth.InstructorUserRepository;
+import com.infnet.main_service.repository.auth.TraineeUserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DataLoader implements CommandLineRunner {
-    private final UserRepository userRepository;
+    private final InstructorUserRepository instructorRepository;
+    private final TraineeUserRepository traineeRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public DataLoader(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
+    public DataLoader(InstructorUserRepository instructorRepository,
+                      TraineeUserRepository traineeRepository,
+                      PasswordEncoder passwordEncoder) {
+        this.instructorRepository = instructorRepository;
+        this.traineeRepository = traineeRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public void run(String... args) {
-        if (userRepository.count() == 0) {
-            User instructor = User.builder()
-                    .username("instructor")
+        if (instructorRepository.count() == 0) {
+            InstructorUser instructor = InstructorUser.builder()
+                    .email("instructor@fitcoach.com")
                     .password(passwordEncoder.encode("123456"))
                     .role(Role.ROLE_INSTRUCTOR)
                     .build();
+            instructorRepository.save(instructor);
+        }
 
-            User trainee = User.builder()
-                    .username("trainee")
-                    .password(passwordEncoder.encode("123456"))
+        if (traineeRepository.count() == 0) {
+            TraineeUser trainee = TraineeUser.builder()
+                    .cpf("12345678900")
+                    .password(null)
                     .role(Role.ROLE_TRAINEE)
                     .build();
-
-            userRepository.save(instructor);
-            userRepository.save(trainee);
+            traineeRepository.save(trainee);
         }
     }
 }

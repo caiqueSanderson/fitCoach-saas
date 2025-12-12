@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: workout-config
+  namespace: fitcoach
+data:
+  MONGODB_URI: "mongodb://workout-mongo:27017/workoutdb"
+  SERVER_PORT: "8081"
+  JAEGER_ENDPOINT: "http://jaeger:14250"
+  RABBITMQ_HOST: "workout-rabbit"
+  RABBITMQ_PORT: "5672"

@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-gateway-config
+  namespace: fitcoach
+data:
+  application.yml: |
+    server:
+      port: 8080
+
+    spring:
+      cloud:
+        gateway:
+          routes:
+            - id: workout-service
+              uri: http://workout-service.fitcoach.svc.cluster.local:8081
+              predicates:
+                - Path=/workout/**
+
+            - id: main-service
+              uri: http://main-service.fitcoach.svc.cluster.local:8082
+              predicates:
+                - Path=/main/**
+
+          default-filters:
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+            - AddResponseHeader=Access-Control-Allow-Origin, *
+
+    management:
+      endpoints:
+        web:
+          exposure:
+            include: "*"

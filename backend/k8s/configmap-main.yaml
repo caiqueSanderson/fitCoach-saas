@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-main
+  namespace: fitcoach
+data:
+  SPRING_PROFILES_ACTIVE: "docker"
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://main-postgres:5432/maindb"
+  WORKOUT_SERVICE_URL: "http://workout-service:8081"
+  RABBITMQ_HOST: "workout-rabbit"

@@ -2,23 +2,27 @@ server:
   port: 8082
 
 spring:
-  profiles:
-  active: docker
+  config:
+    activate:
+      on-profile: docker
+
   datasource:
-  url: jdbc:postgresql://main-postgres:5432/maindb
-  username: postgres
-  password: admin
+    url: jdbc:postgresql://main-postgres:5432/maindb
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
-    ddl-auto: update
-  
-  # Apontar para workout-service (container DNS)
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
   clients:
     workout-service:
-    url: http://workout-service:8081
-  
-  # RabbitMQ (shared broker)
+      url: http://workout-service:8081
+
   rabbitmq:
     host: workout-rabbit
     username: guest

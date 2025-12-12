@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workout-rabbit
+  namespace: fitcoach
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: workout-rabbit
+  template:
+    metadata:
+      labels:
+        app: workout-rabbit
+    spec:
+      containers:
+        - name: rabbitmq
+          image: rabbitmq:3-management
+          env:
+            - name: RABBITMQ_DEFAULT_USER
+              valueFrom:
+                secretKeyRef:
+                  name: workout-secret
+                  key: RABBITMQ_USERNAME
+            - name: RABBITMQ_DEFAULT_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: workout-secret
+                  key: RABBITMQ_PASSWORD
+          ports:
+            - containerPort: 5672
+            - containerPort: 15672
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: workout-rabbit
+  namespace: fitcoach
+spec:
+  ports:
+    - port: 5672
+      name: amqp
+    - port: 15672
+      name: management
+  selector:
+    app: workout-rabbit

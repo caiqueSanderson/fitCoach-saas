@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: workout-mongo
+  namespace: fitcoach
+spec:
+  serviceName: workout-mongo
+  replicas: 1
+  selector:
+    matchLabels:
+      app: workout-mongo
+  template:
+    metadata:
+      labels:
+        app: workout-mongo
+    spec:
+      containers:
+        - name: mongo
+          image: mongo:6.0
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: mongo-data
+              mountPath: /data/db
+  volumeClaimTemplates:
+    - metadata:
+        name: mongo-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 5Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: workout-mongo
+  namespace: fitcoach
+spec:
+  ports:
+    - port: 27017
+  selector:
+    app: workout-mongo
+  clusterIP: None
