@@ -1,3 +1,6 @@
+server:
+  port: 8082
+
 spring:
   application:
     name: main-service
@@ -17,3 +20,15 @@ spring:
     console:
       enabled: true
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-server:8761/eureka
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
