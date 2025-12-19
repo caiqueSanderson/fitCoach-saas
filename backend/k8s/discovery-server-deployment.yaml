@@ -1,43 +1,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-gateway
+  name: discovery-server
   namespace: fitcoach
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: api-gateway
+      app: discovery-server
   template:
     metadata:
       labels:
-        app: api-gateway
+        app: discovery-server
     spec:
       containers:
-        - name: gateway
-          image: csborges/api-gateway:latest
+        - name: discovery-server
+          image: csborges/discovery-server:latest
           ports:
-            - containerPort: 8080
-          volumeMounts:
-            - name: config
-              mountPath: /config
+            - containerPort: 8761
 
           livenessProbe:
             httpGet:
               path: /actuator/health/liveness
-              port: 8080
+              port: 8761
             initialDelaySeconds: 60
             periodSeconds: 20
 
           readinessProbe:
             httpGet:
               path: /actuator/health/readiness
-              port: 8080
+              port: 8761
             initialDelaySeconds: 40
             periodSeconds: 10
             failureThreshold: 5
-
-      volumes:
-        - name: config
-          configMap:
-            name: api-gateway-config

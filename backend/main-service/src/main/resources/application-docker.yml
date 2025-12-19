@@ -27,3 +27,10 @@ spring:
     host: workout-rabbit
     username: guest
     password: guest
+
+management:
+  health:
+    rabbit:
+      enabled: false
+    db:
+      enabled: true
